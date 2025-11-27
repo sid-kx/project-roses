@@ -766,3 +766,379 @@ body.bg-dark {
     text-align: center;
   }
 }
+
+/* ================= CUSTOM ORDERS SECTION ================= */
+
+.custom-orders-section {
+  position: relative;
+  padding: 6rem 0 6rem;
+  background: radial-gradient(circle at top, rgba(224, 185, 106, 0.09), transparent 52%),
+    rgba(5, 5, 5, 0.9);
+}
+
+.custom-orders-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.custom-orders-intro {
+  max-width: 640px;
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin: 0 0 1.5rem;
+}
+
+.custom-order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.order-panel {
+  padding: 1.8rem 1.7rem 1.9rem;
+  border-radius: 20px;
+  background: rgba(5, 5, 5, 0.9);
+  border: 1px solid rgba(224, 185, 106, 0.4);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.9);
+}
+
+.order-panel-header {
+  margin-bottom: 1.4rem;
+}
+
+.order-panel-title {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-gold-soft);
+}
+
+.order-panel-subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+.optional-tag {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-muted);
+}
+
+/* Ribbon grids */
+
+.ribbon-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.ribbon-grid-primary {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.ribbon-grid-secondary {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.ribbon-option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 0.5rem 0.8rem;
+  border-radius: 16px;
+  border: 1px solid rgba(224, 185, 106, 0.45);
+  background: radial-gradient(circle at top, rgba(224, 185, 106, 0.18), transparent 60%),
+    rgba(5, 5, 5, 0.9);
+  cursor: pointer;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.16s ease,
+    background 0.18s ease;
+}
+
+.ribbon-option-secondary {
+  background: rgba(5, 5, 5, 0.92);
+}
+
+.ribbon-option:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.8);
+}
+
+.ribbon-option.is-selected {
+  border-color: rgba(242, 214, 162, 0.95);
+  box-shadow: 0 0 0 1px rgba(242, 214, 162, 0.65), 0 20px 44px rgba(0, 0, 0, 0.95);
+}
+
+.ribbon-image-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* make the image area a square */
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.85);
+}
+
+.ribbon-image-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fill the square nicely */
+}
+
+.ribbon-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-align: center;
+}
+
+/* Add-ons */
+
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 1.4rem;
+}
+
+.addon-option {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.addon-option input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.addon-label-main {
+  font-weight: 500;
+}
+
+.addon-hint {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+.addons-quantity-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.addon-quantity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.addon-quantity input[type="number"] {
+  padding: 0.55rem 0.65rem;
+  border-radius: 10px;
+  border: 1px solid rgba(224, 185, 106, 0.5);
+  background: #050505;
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+.addon-quantity input[type="number"]:focus {
+  outline: none;
+  border-color: rgba(242, 214, 162, 0.9);
+  box-shadow: 0 0 0 1px rgba(242, 214, 162, 0.6);
+}
+
+/* Details & contact */
+
+.order-details-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.3fr;
+  gap: 1.75rem;
+}
+
+.field-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.required-indicator {
+  color: var(--color-gold-soft);
+}
+
+.order-details-field textarea {
+  width: 100%;
+  min-height: 140px;
+  padding: 0.8rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid rgba(224, 185, 106, 0.5);
+  background: #050505;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  resize: vertical;
+}
+
+.order-contact-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.order-contact-field input[type="text"],
+.order-contact-field input[type="tel"] {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid rgba(224, 185, 106, 0.5);
+  background: #050505;
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+.order-contact-field input:focus,
+.order-details-field textarea:focus {
+  outline: none;
+  border-color: rgba(242, 214, 162, 0.9);
+  box-shadow: 0 0 0 1px rgba(242, 214, 162, 0.6);
+}
+
+/* Submit row */
+
+.order-submit-row {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-full {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* ================= ORDER MODAL ================= */
+
+.order-modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.82);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-out;
+  z-index: 1200;
+}
+
+.order-modal-overlay--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.order-modal {
+  max-width: 420px;
+  width: calc(100% - 3rem);
+  background: #050505;
+  border-radius: 20px;
+  border: 1px solid rgba(224, 185, 106, 0.6);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.95);
+  transform: translateY(14px) scale(0.98);
+  opacity: 0;
+  transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+  position: relative;
+}
+
+.order-modal--open {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.order-modal-close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.8rem;
+  border: none;
+  background: transparent;
+  color: var(--color-gold-soft);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.order-modal-body {
+  padding: 1.9rem 1.7rem 1.7rem;
+  text-align: center;
+}
+
+.order-modal-title {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--color-gold-soft);
+}
+
+.order-modal-text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+/* Responsive: Custom Orders */
+
+@media (max-width: 992px) {
+  .ribbon-grid-primary {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .ribbon-grid-secondary {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .addons-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .order-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-orders-section {
+    padding: 4.5rem 0 4.5rem;
+  }
+
+  .custom-orders-intro {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ribbon-grid-primary {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ribbon-grid-secondary {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .addons-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .order-submit-row {
+    justify-content: center;
+  }
+}

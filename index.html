@@ -308,7 +308,300 @@
 
     <!-- CUSTOM ORDERS / FORM -->
     <section id="custom-orders" class="section custom-orders-section">
-      <!-- Custom order form will go here -->
+      <div class="container custom-orders-inner">
+        <p class="section-eyebrow">Custom Orders</p>
+        <h2 class="section-title">Build Your Ribbon Bouquet</h2>
+        <p class="custom-orders-intro">
+          Choose your ribbon colours, add-ons and details below. We’ll review your request and confirm everything with you
+          before you pay.
+        </p>
+
+        <form id="custom-order-form" class="custom-order-form" novalidate>
+          <!-- PANEL 1: Primary Ribbon Colour -->
+          <div class="order-panel">
+            <div class="order-panel-header">
+              <h3 class="order-panel-title">Ribbon Colour</h3>
+              <p class="order-panel-subtitle">Choose one primary ribbon colour (required).</p>
+            </div>
+
+            <div class="ribbon-grid ribbon-grid-primary">
+              <button type="button" class="ribbon-option" data-ribbon-primary data-color="blush-pink">
+                <span class="ribbon-image-wrap">
+                  <img src="images/blush-pink-ribbon.png" alt="Blush pink ribbon" />
+                </span>
+                <span class="ribbon-label">Blush Pink</span>
+              </button>
+
+              <button type="button" class="ribbon-option" data-ribbon-primary data-color="red">
+                <span class="ribbon-image-wrap">
+                  <img src="images/red-ribbon.png" alt="Red ribbon" />
+                </span>
+                <span class="ribbon-label">Red</span>
+              </button>
+
+              <button type="button" class="ribbon-option" data-ribbon-primary data-color="pastel-pink">
+                <span class="ribbon-image-wrap">
+                  <img src="images/pastel-pink-ribbon.png" alt="Pastel pink ribbon" />
+                </span>
+                <span class="ribbon-label">Pastel Pink</span>
+              </button>
+
+              <button type="button" class="ribbon-option" data-ribbon-primary data-color="hot-pink">
+                <span class="ribbon-image-wrap">
+                  <img src="images/hot-pink-ribbon.png" alt="Hot pink ribbon" />
+                </span>
+                <span class="ribbon-label">Hot Pink</span>
+              </button>
+
+              <button type="button" class="ribbon-option" data-ribbon-primary data-color="baby-blue">
+                <span class="ribbon-image-wrap">
+                  <img src="images/baby-blue-ribbon.png" alt="Baby blue ribbon" />
+                </span>
+                <span class="ribbon-label">Baby Blue</span>
+              </button>
+
+              <button type="button" class="ribbon-option" data-ribbon-primary data-color="aqua-blue">
+                <span class="ribbon-image-wrap">
+                  <img src="images/aqua-blue-ribbon.png" alt="Aqua blue ribbon" />
+                </span>
+                <span class="ribbon-label">Aqua Blue</span>
+              </button>
+
+              <button type="button" class="ribbon-option" data-ribbon-primary data-color="blue">
+                <span class="ribbon-image-wrap">
+                  <img src="images/blue-ribbon.png" alt="Blue ribbon" />
+                </span>
+                <span class="ribbon-label">Blue</span>
+              </button>
+
+              <button type="button" class="ribbon-option" data-ribbon-primary data-color="yellow">
+                <span class="ribbon-image-wrap">
+                  <img src="images/yellow-ribbon.png" alt="Yellow ribbon" />
+                </span>
+                <span class="ribbon-label">Yellow</span>
+              </button>
+
+              <button type="button" class="ribbon-option" data-ribbon-primary data-color="white">
+                <span class="ribbon-image-wrap">
+                  <img src="images/white-ribbon.png" alt="White ribbon" />
+                </span>
+                <span class="ribbon-label">White</span>
+              </button>
+
+              <button type="button" class="ribbon-option" data-ribbon-primary data-color="black">
+                <span class="ribbon-image-wrap">
+                  <img src="images/black-ribbon.png" alt="Black ribbon" />
+                </span>
+                <span class="ribbon-label">Black</span>
+              </button>
+
+              <button type="button" class="ribbon-option" data-ribbon-primary data-color="brown">
+                <span class="ribbon-image-wrap">
+                  <img src="images/brown-ribbon.png" alt="Brown ribbon" />
+                </span>
+                <span class="ribbon-label">Brown</span>
+              </button>
+
+              <button type="button" class="ribbon-option" data-ribbon-primary data-color="deep-magenta">
+                <span class="ribbon-image-wrap">
+                  <img src="images/deep-magenta-ribbon.png" alt="Deep magenta ribbon" />
+                </span>
+                <span class="ribbon-label">Deep Magenta</span>
+              </button>
+
+              <button type="button" class="ribbon-option" data-ribbon-primary data-color="peach">
+                <span class="ribbon-image-wrap">
+                  <img src="images/peach-ribbon.png" alt="Peach ribbon" />
+                </span>
+                <span class="ribbon-label">Peach</span>
+              </button>
+
+              <button type="button" class="ribbon-option" data-ribbon-primary data-color="grey">
+                <span class="ribbon-image-wrap">
+                  <img src="images/grey-ribbon.png" alt="Grey ribbon" />
+                </span>
+                <span class="ribbon-label">Grey</span>
+              </button>
+
+              <button type="button" class="ribbon-option" data-ribbon-primary data-color="green">
+                <span class="ribbon-image-wrap">
+                  <img src="images/green-ribbon.png" alt="Green ribbon" />
+                </span>
+                <span class="ribbon-label">Green</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- PANEL 2: Secondary Ribbon Colour (optional) -->
+          <div class="order-panel">
+            <div class="order-panel-header">
+              <h3 class="order-panel-title">Secondary Ribbon Colour <span class="optional-tag">(optional)</span></h3>
+              <p class="order-panel-subtitle">Add a secondary ribbon colour for layering or small details.</p>
+            </div>
+
+            <div class="ribbon-grid ribbon-grid-secondary">
+              <button type="button" class="ribbon-option ribbon-option-secondary" data-ribbon-secondary data-color="white">
+                <span class="ribbon-image-wrap">
+                  <img src="images/white-ribbon.png" alt="White ribbon" />
+                </span>
+                <span class="ribbon-label">White</span>
+              </button>
+
+              <button type="button" class="ribbon-option ribbon-option-secondary" data-ribbon-secondary data-color="black">
+                <span class="ribbon-image-wrap">
+                  <img src="images/black-ribbon.png" alt="Black ribbon" />
+                </span>
+                <span class="ribbon-label">Black</span>
+              </button>
+
+              <button type="button" class="ribbon-option ribbon-option-secondary" data-ribbon-secondary data-color="gold">
+                <span class="ribbon-image-wrap">
+                  <img src="images/gold-ribbon.png" alt="Gold ribbon" />
+                </span>
+                <span class="ribbon-label">Gold</span>
+              </button>
+
+              <button type="button" class="ribbon-option ribbon-option-secondary" data-ribbon-secondary data-color="baby-blue">
+                <span class="ribbon-image-wrap">
+                  <img src="images/baby-blue-ribbon.png" alt="Baby blue ribbon" />
+                </span>
+                <span class="ribbon-label">Baby Blue</span>
+              </button>
+
+              <button type="button" class="ribbon-option ribbon-option-secondary" data-ribbon-secondary data-color="pastel-pink">
+                <span class="ribbon-image-wrap">
+                  <img src="images/pastel-pink-ribbon.png" alt="Pastel pink ribbon" />
+                </span>
+                <span class="ribbon-label">Pastel Pink</span>
+              </button>
+
+              <button type="button" class="ribbon-option ribbon-option-secondary" data-ribbon-secondary data-color="peach">
+                <span class="ribbon-image-wrap">
+                  <img src="images/peach-ribbon.png" alt="Peach ribbon" />
+                </span>
+                <span class="ribbon-label">Peach</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- PANEL 3: Add-Ons -->
+          <div class="order-panel">
+            <div class="order-panel-header">
+              <h3 class="order-panel-title">Add-Ons</h3>
+              <p class="order-panel-subtitle">Select any extras and let us know how many flowers you’d like for Dahlia or Plumeria.</p>
+            </div>
+
+            <div class="addons-grid">
+              <label class="addon-option">
+                <input type="checkbox" id="addon-glitter" />
+                <span class="addon-label-main">Glitter</span>
+                <span class="addon-hint">(roses only)</span>
+              </label>
+
+              <label class="addon-option">
+                <input type="checkbox" id="addon-crown" />
+                <span class="addon-label-main">Crown</span>
+              </label>
+
+              <label class="addon-option">
+                <input type="checkbox" id="addon-butterfly" />
+                <span class="addon-label-main">Butterfly</span>
+              </label>
+
+              <label class="addon-option">
+                <input type="checkbox" id="addon-writing" />
+                <span class="addon-label-main">Writing</span>
+              </label>
+
+              <label class="addon-option">
+                <input type="checkbox" id="addon-gems" />
+                <span class="addon-label-main">Gems</span>
+                <span class="addon-hint">(roses only)</span>
+              </label>
+            </div>
+
+            <div class="addons-quantity-row">
+              <div class="addon-quantity">
+                <label for="addon-dahlia-qty" class="addon-label-main">Dahlia flowers</label>
+                <input
+                  type="number"
+                  id="addon-dahlia-qty"
+                  min="0"
+                  max="100"
+                  inputmode="numeric"
+                  placeholder="0"
+                />
+                <span class="addon-hint">$5 per flower</span>
+              </div>
+
+              <div class="addon-quantity">
+                <label for="addon-plumeria-qty" class="addon-label-main">Plumeria flowers</label>
+                <input
+                  type="number"
+                  id="addon-plumeria-qty"
+                  min="0"
+                  max="100"
+                  inputmode="numeric"
+                  placeholder="0"
+                />
+                <span class="addon-hint">$5 per flower</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL 4: Extra Details + Contact -->
+          <div class="order-panel">
+            <div class="order-panel-header">
+              <h3 class="order-panel-title">Details &amp; Contact</h3>
+              <p class="order-panel-subtitle">Tell us who it’s for, the occasion and any small details we should know.</p>
+            </div>
+
+            <div class="order-details-grid">
+              <div class="order-details-field">
+                <label for="order-details" class="field-label">Extra details</label>
+                <textarea
+                  id="order-details"
+                  rows="4"
+                  placeholder="Example: For my girlfriend’s 18th birthday, she loves pink and butterflies. I’d like a name ribbon that says “Happy 18th, Aikam”."
+                ></textarea>
+              </div>
+
+              <div class="order-contact-fields">
+                <div class="order-contact-field">
+                  <label for="customer-name" class="field-label">Your name<span class="required-indicator">*</span></label>
+                  <input
+                    id="customer-name"
+                    type="text"
+                    autocomplete="name"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+
+                <div class="order-contact-field">
+                  <label for="customer-phone" class="field-label">Phone number<span class="required-indicator">*</span></label>
+                  <input
+                    id="customer-phone"
+                    type="tel"
+                    autocomplete="tel"
+                    placeholder="Enter your phone number"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUBMIT -->
+          <div class="order-submit-row">
+            <button
+              id="custom-order-submit"
+              type="submit"
+              class="btn btn-primary btn-full"
+            >
+              SUBMIT FORM
+            </button>
+          </div>
+        </form>
+      </div>
     </section>
 
     <!-- GALLERY -->
@@ -326,6 +619,26 @@
       <!-- Contact + socials will go here -->
     </section>
   </main>
+
+  <!-- Order success modal -->
+  <div id="order-modal-overlay" class="order-modal-overlay">
+    <div id="order-modal" class="order-modal">
+      <button
+        type="button"
+        class="order-modal-close"
+        aria-label="Close"
+        data-order-modal-close
+      >
+        ×
+      </button>
+      <div class="order-modal-body">
+        <h3 class="order-modal-title">Form submitted</h3>
+        <p class="order-modal-text">
+          Your form has been submitted. We will reach back to you within 24 hours. Thank you.
+        </p>
+      </div>
+    </div>
+  </div>
 
   <!-- Main script -->
   <script src="script.js" defer></script>
