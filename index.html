@@ -8,31 +8,31 @@
   <!-- Main stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Temporary inline styles for hero background -->
+  <!-- Hero / background override: roses behind navbar & hero -->
   <style>
-  body {
-    /* Override page background so roses sit behind navbar as well */
-    background-image:
-      linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.9)),
-      url("images/hero-background.png");
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-  }
+    body {
+      /* Override page background so roses sit behind navbar as well */
+      background-image:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.9)),
+        url("images/hero-background.png");
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
 
-  .hero-section {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 6rem 1.5rem 5rem;
-    color: #f7f3ea;
-    background: transparent; /* let body background show through */
-  }
-</style>
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 0 5rem;
+      color: #f7f3ea;
+      background: transparent; /* let body background show through */
+    }
+  </style>
 </head>
 <body>
   <!-- ================= HEADER / NAVBAR ================= -->
@@ -65,42 +65,267 @@
     </nav>
   </header>
 
-  <!-- ================ PAGE SECTIONS (placeholders for now) ================ -->
+  <!-- ================ PAGE SECTIONS ================ -->
   <main>
+    <!-- HERO -->
     <section id="hero" class="section hero-section">
-      <!-- Hero content will go here -->
+      <div class="hero-inner container">
+        <div class="hero-card">
+          <p class="hero-eyebrow">Brampton · Handcrafted Gifts</p>
+
+          <h1 class="hero-title">
+            Luxury Ribbon Bouquets
+            <span class="hero-title-line">That Last Beyond the Moment</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Handmade in Brampton, perfect for birthdays, anniversaries, proposals and every “just because” moment.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary" type="button" data-scroll-target="#custom-orders">
+              Order a Bouquet
+            </button>
+            <button class="btn btn-outline" type="button" data-scroll-target="#gallery">
+              View Gallery
+            </button>
+          </div>
+
+          <p class="hero-note">Pickup &amp; local delivery available in Brampton.</p>
+        </div>
+      </div>
     </section>
 
+    <!-- ABOUT (Section 2) -->
     <section id="about" class="section about-section">
-      <!-- About content will go here -->
+      <div class="container about-inner">
+        <div class="about-grid">
+          <div class="about-content">
+            <p class="section-eyebrow">About</p>
+            <h2 class="section-title">About Roses by Aikam</h2>
+
+            <p class="about-text">
+              Roses by Aikam started with a simple idea – to create gifts that last longer than real flowers and
+              feel as special as the moment they're given. Every bouquet is handcrafted in Brampton, with carefully
+              chosen ribbons, colours and add-ons made just for you.
+            </p>
+
+            <p class="about-text">
+              Whether it's a birthday, anniversary, proposal or a "just because" surprise, each bouquet is made
+              to match your person's style and story, from ribbon shades to the final wrap.
+            </p>
+
+            <div class="about-card-image">
+              <img src="images/about-card.png" alt="Roses by Aikam contact card with QR code" />
+            </div>
+          </div>
+
+          <div class="about-highlights">
+            <div class="about-card">
+              <h3 class="about-card-title">Handmade in Brampton</h3>
+              <p class="about-card-text">Every bouquet is crafted by hand – no mass production, just careful, neat work.</p>
+            </div>
+
+            <div class="about-card">
+              <h3 class="about-card-title">Fully Customizable</h3>
+              <p class="about-card-text">Choose ribbon colours, names, messages, butterflies, glitter and Dior-style wrapping.</p>
+            </div>
+
+            <div class="about-card">
+              <h3 class="about-card-title">Long-Lasting Gifts</h3>
+              <p class="about-card-text">Ribbon roses that don't wilt – a keepsake they can keep on their shelf for years.</p>
+            </div>
+
+            <div class="about-card">
+              <h3 class="about-card-title">For Every Occasion</h3>
+              <p class="about-card-text">Perfect for birthdays, proposals, anniversaries, Valentine's Day, Mother's Day and more.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
+    <!-- BOUQUETS / PRODUCTS -->
     <section id="bouquets" class="section bouquets-section">
-      <!-- Product / collection content will go here -->
+      <div class="container bouquets-inner">
+        <p class="section-eyebrow">Bouquets</p>
+        <h2 class="section-title">Signature Ribbon Bouquets</h2>
+
+        <p class="bouquets-intro">
+          Take a quick tour of a few of our favourite custom designs – each one made for a real moment and a real person.
+        </p>
+
+        <div class="bouquet-grid">
+          <!-- Bouquet 1 -->
+          <article class="bouquet-card">
+            <div class="bouquet-image">
+              <img src="images/bouqet-1.png" alt="Pink Hello Kitty ribbon bouquet" />
+            </div>
+            <div class="bouquet-body">
+              <p class="bouquet-tag">For Her</p>
+              <h3 class="bouquet-name">Hello Kitty Pink Surprise</h3>
+              <p class="bouquet-story">
+                He wanted something as cute as she is – soft pink ribbon roses, layered pink wrap and a Hello Kitty centrepiece
+                holding a heart. Perfect for anniversaries, promise days or a “just because” surprise for your girlfriend.
+              </p>
+            </div>
+          </article>
+
+          <!-- Bouquet 2 -->
+          <article class="bouquet-card">
+            <div class="bouquet-image">
+              <img src="images/bouqet-2.png" alt="Blue glitter Happy Birthday bouquet" />
+            </div>
+            <div class="bouquet-body">
+              <p class="bouquet-tag">For Him</p>
+              <h3 class="bouquet-name">Midnight Blue Birthday</h3>
+              <p class="bouquet-story">
+                Built for a boyfriend’s birthday – deep blue glitter roses, layered black and nude wrap and a bold
+                “Happy Birthday” ribbon with gems. A clean, masculine bouquet that still feels special and thoughtful.
+              </p>
+            </div>
+          </article>
+
+          <!-- Bouquet 3 -->
+          <article class="bouquet-card">
+            <div class="bouquet-image">
+              <img src="images/bouqet-3.png" alt="Red ribbon bouquet with gold butterfly and thank you card" />
+            </div>
+            <div class="bouquet-body">
+              <p class="bouquet-tag">Timeless</p>
+              <h3 class="bouquet-name">Golden Butterfly Thank You</h3>
+              <p class="bouquet-story">
+                A classic red-and-gold bouquet, finished with a metallic butterfly and thank you card. Chosen to thank
+                someone who did “more than flowers could say” – perfect for parents, teachers or anyone you appreciate.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
+    <!-- PRICING -->
     <section id="pricing" class="section pricing-section">
-      <!-- Pricing table will go here -->
+      <div class="container pricing-inner">
+        <div class="pricing-header">
+          <div class="pricing-heading">
+            <p class="section-eyebrow">Pricing</p>
+            <h2 class="section-title">Price List</h2>
+            <p class="pricing-note">
+              All bouquets are handcrafted to order in Brampton. Choose your rose count and add-ons to make it yours.
+            </p>
+          </div>
+
+          <div class="pricing-sticker-wrap">
+            <img
+              src="images/pricing-spin.png"
+              alt="Pink ribbon bouquet pricing sticker"
+              class="pricing-sticker"
+            />
+          </div>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-column">
+            <h3 class="pricing-subtitle">Rose Bouquets</h3>
+            <ul class="pricing-list">
+              <li>
+                <span class="pricing-item-name">7 count</span>
+                <span class="pricing-item-dots"></span>
+                <span class="pricing-item-price">$15</span>
+              </li>
+              <li>
+                <span class="pricing-item-name">9 count</span>
+                <span class="pricing-item-dots"></span>
+                <span class="pricing-item-price">$20</span>
+              </li>
+              <li>
+                <span class="pricing-item-name">12 count</span>
+                <span class="pricing-item-dots"></span>
+                <span class="pricing-item-price">$25</span>
+              </li>
+              <li>
+                <span class="pricing-item-name">15 count</span>
+                <span class="pricing-item-dots"></span>
+                <span class="pricing-item-price">$30</span>
+              </li>
+              <li>
+                <span class="pricing-item-name">20 count</span>
+                <span class="pricing-item-dots"></span>
+                <span class="pricing-item-price">$40</span>
+              </li>
+              <li>
+                <span class="pricing-item-name">30 count</span>
+                <span class="pricing-item-dots"></span>
+                <span class="pricing-item-price">$50</span>
+              </li>
+            </ul>
+            <p class="pricing-footnote">Custom counts are available – send us a message for a quote.</p>
+          </div>
+
+          <div class="pricing-column">
+            <h3 class="pricing-subtitle">Add-Ons</h3>
+            <ul class="pricing-list">
+              <li>
+                <span class="pricing-item-name">Crowns</span>
+                <span class="pricing-item-dots"></span>
+                <span class="pricing-item-price">$3</span>
+              </li>
+              <li>
+                <span class="pricing-item-name">Butterflies</span>
+                <span class="pricing-item-dots"></span>
+                <span class="pricing-item-price">$1</span>
+              </li>
+              <li>
+                <span class="pricing-item-name">Writing</span>
+                <span class="pricing-item-dots"></span>
+                <span class="pricing-item-price">$3</span>
+              </li>
+              <li>
+                <span class="pricing-item-name">Glitter (roses only)</span>
+                <span class="pricing-item-dots"></span>
+                <span class="pricing-item-price">$0.75 / rose</span>
+              </li>
+              <li>
+                <span class="pricing-item-name">Gems (roses only)</span>
+                <span class="pricing-item-dots"></span>
+                <span class="pricing-item-price">$0.50 / rose</span>
+              </li>
+              <li>
+                <span class="pricing-item-name">Dahlia / Plumeria</span>
+                <span class="pricing-item-dots"></span>
+                <span class="pricing-item-price">$5 / flower</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="pricing-small-print">
+          Prices are in CAD. Final total may vary based on custom designs, wrapping and add-on combinations.
+        </p>
+      </div>
     </section>
 
+    <!-- CUSTOM ORDERS / FORM -->
     <section id="custom-orders" class="section custom-orders-section">
-      <!-- Custom form will go here -->
+      <!-- Custom order form will go here -->
     </section>
 
+    <!-- GALLERY -->
     <section id="gallery" class="section gallery-section">
       <!-- Bouquet photos grid will go here -->
     </section>
 
+    <!-- POLICY -->
     <section id="policy" class="section policy-section">
       <!-- Policy content will go here -->
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="section contact-section">
       <!-- Contact + socials will go here -->
     </section>
   </main>
-
-  <!-- Optional footer later -->
 
   <!-- Main script -->
   <script src="script.js" defer></script>
