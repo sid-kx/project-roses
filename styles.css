@@ -959,6 +959,89 @@ body.bg-dark {
   box-shadow: 0 0 0 1px rgba(242, 214, 162, 0.6);
 }
 
+/* Rose count slider */
+
+.rose-slider-row {
+  margin-top: 1.4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.rose-slider-wrapper {
+  width: 100%;
+  max-width: 640px;
+  padding: 0.85rem 1.3rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid rgba(224, 185, 106, 0.55);
+  background: radial-gradient(circle at top, rgba(224, 185, 106, 0.12), transparent 55%),
+    rgba(5, 5, 5, 0.96);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.rose-slider-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.rose-slider-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.rose-slider-count {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-gold-soft);
+}
+
+/* Slider track + thumb */
+
+.rose-slider-input {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(224, 185, 106, 0.25), rgba(176, 22, 36, 0.45));
+  outline: none;
+}
+
+/* WebKit (Chrome / Safari) thumb */
+.rose-slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 20% 0, #ff4155 0, var(--color-red) 55%, #050505 100%);
+  border: 2px solid #050505;
+  box-shadow: 0 0 0 1px rgba(224, 185, 106, 0.8), 0 10px 22px rgba(0, 0, 0, 0.9);
+  cursor: pointer;
+}
+
+/* Firefox thumb */
+.rose-slider-input::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 20% 0, #ff4155 0, var(--color-red) 55%, #050505 100%);
+  border: 2px solid #050505;
+  box-shadow: 0 0 0 1px rgba(224, 185, 106, 0.8), 0 10px 22px rgba(0, 0, 0, 0.9);
+  cursor: pointer;
+}
+
+.rose-slider-input::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(224, 185, 106, 0.25), rgba(176, 22, 36, 0.45));
+}
+
 /* Flower Count Panel */
 .flower-count-panel {
   margin-top: 1.25rem;
@@ -981,12 +1064,84 @@ body.bg-dark {
   color: var(--color-muted);
 }
 
+
 .flower-count-value {
   font-family: var(--font-heading);
   font-size: 1.3rem;
   color: var(--color-gold-soft);
   min-width: 2ch;
   text-align: center;
+}
+
+/* Cost summary panel */
+
+.order-panel-cost {
+  margin-top: 0.5rem;
+}
+
+.cost-panel-body {
+  margin-top: 1.25rem;
+}
+
+.cost-breakdown-list {
+  list-style: none;
+  margin: 0 0 0.9rem;
+  padding: 0;
+}
+
+.cost-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.9rem;
+}
+
+.cost-row:last-child {
+  border-bottom: none;
+}
+
+.cost-label {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(247, 243, 234, 0.78);
+}
+
+.cost-amount {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-gold-soft);
+}
+
+.cost-total-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 0.7rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cost-total-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold-soft);
+}
+
+.cost-total-amount {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-variant-numeric: tabular-nums;
+  color: #ffffff;
+}
+
+.cost-note {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  opacity: 0.8;
 }
 
 /* Details & contact */
@@ -1168,6 +1323,17 @@ body.bg-dark {
 
   .addons-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rose-slider-wrapper {
+    border-radius: 18px;
+    padding: 0.8rem 1.1rem 0.95rem;
+  }
+
+  .rose-slider-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
   }
 
   .flower-count-panel {

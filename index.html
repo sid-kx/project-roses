@@ -559,13 +559,74 @@
                 <span class="addon-hint">$5 per flower</span>
               </div>
             </div>
-            <div class="flower-count-panel">
-              <span class="flower-count-label">Total flowers</span>
-              <span id="flower-count-value" class="flower-count-value">0</span>
+
+            <!-- Rose count slider: choose overall bouquet size -->
+            <div class="rose-slider-row">
+              <label class="rose-slider-label" for="rose-count-slider">
+                Normal roses in bouquet
+              </label>
+              <div class="rose-slider-wrapper">
+                <input
+                  type="range"
+                  id="rose-count-slider"
+                  min="0"
+                  max="5"
+                  step="1"
+                  value="0"
+                />
+                <div class="rose-slider-count">
+                  <span class="rose-slider-count-label">Roses in bouquet:</span>
+                  <span id="rose-count-display">7</span>
+                </div>
+              </div>
+            </div>
+
+          <div class="flower-count-panel">
+            <span class="flower-count-label">Total flowers</span>
+            <span id="flower-count-value" class="flower-count-value">0</span>
+          </div>
+        </div>
+
+        <!-- PANEL 4: Cost Summary -->
+        <div class="order-panel order-panel-cost">
+          <div class="order-panel-header">
+            <h3 class="order-panel-title">Cost</h3>
+            <p class="order-panel-subtitle">
+              A quick breakdown of your bouquet based on the rose count, special flowers and add-ons you’ve selected.
+            </p>
+          </div>
+
+          <div class="cost-panel-body">
+            <ul id="cost-breakdown-list" class="cost-breakdown-list">
+              <!-- Filled by JavaScript -->
+            </ul>
+
+            <div class="cost-total-row">
+              <span class="cost-total-label">Total</span>
+              <span id="cost-total-amount" class="cost-total-amount">$0.00</span>
             </div>
           </div>
 
-          <!-- PANEL 4: Extra Details + Contact -->
+          <!-- Hidden fields for sending cost info with the form email -->
+          <input type="hidden" id="cost-summary-input" name="cost_summary" />
+          <input type="hidden" id="cost-total-input" name="cost_total" />
+
+          <input type="hidden" id="primary-color-input" name="primary_color" />
+          <input type="hidden" id="secondary-color-input" name="secondary_color" />
+          <input type="hidden" id="bouquet-size-input" name="bouquet_size" />
+          <input type="hidden" id="normal-rose-count-input" name="normal_rose_count" />
+          <input type="hidden" id="total-flowers-input" name="total_flowers" />
+
+          <input type="hidden" id="glitter-choice-input" name="glitter" />
+          <input type="hidden" id="gems-choice-input" name="gems" />
+          <input type="hidden" id="writing-choice-input" name="writing" />
+          <input type="hidden" id="crown-choice-input" name="crown" />
+          <input type="hidden" id="butterfly-choice-input" name="butterfly" />
+
+          <input type="hidden" id="final-price-input" name="final_price" />
+        </div>
+
+        <!-- PANEL 5: Extra Details + Contact -->
           <div class="order-panel">
             <div class="order-panel-header">
               <h3 class="order-panel-title">Details &amp; Contact</h3>
