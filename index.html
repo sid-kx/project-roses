@@ -316,7 +316,17 @@
           before you pay.
         </p>
 
-        <form id="custom-order-form" class="custom-order-form" novalidate>
+        <form
+          id="custom-order-form"
+          class="custom-order-form"
+          action="https://formsubmit.co/rosesbyaikam@gmail.com"
+          method="POST"
+          novalidate
+        >
+          <!-- FormSubmit configuration -->
+          <input type="hidden" name="_subject" value="New Roses by Aikam custom order" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
           <!-- PANEL 1: Primary Ribbon Colour -->
           <div class="order-panel">
             <div class="order-panel-header">
@@ -493,28 +503,28 @@
 
             <div class="addons-grid">
               <label class="addon-option">
-                <input type="checkbox" id="addon-glitter" />
+                <input type="checkbox" id="addon-glitter" name="glitter" />
                 <span class="addon-label-main">Glitter</span>
                 <span class="addon-hint">(roses only)</span>
               </label>
 
               <label class="addon-option">
-                <input type="checkbox" id="addon-crown" />
+                <input type="checkbox" id="addon-crown" name="crown" />
                 <span class="addon-label-main">Crown</span>
               </label>
 
               <label class="addon-option">
-                <input type="checkbox" id="addon-butterfly" />
+                <input type="checkbox" id="addon-butterfly" name="butterfly" />
                 <span class="addon-label-main">Butterfly</span>
               </label>
 
               <label class="addon-option">
-                <input type="checkbox" id="addon-writing" />
+                <input type="checkbox" id="addon-writing" name="writing" />
                 <span class="addon-label-main">Writing</span>
               </label>
 
               <label class="addon-option">
-                <input type="checkbox" id="addon-gems" />
+                <input type="checkbox" id="addon-gems" name="gems" />
                 <span class="addon-label-main">Gems</span>
                 <span class="addon-hint">(roses only)</span>
               </label>
@@ -526,6 +536,7 @@
                 <input
                   type="number"
                   id="addon-dahlia-qty"
+                  name="dahlia_quantity"
                   min="0"
                   max="100"
                   inputmode="numeric"
@@ -539,6 +550,7 @@
                 <input
                   type="number"
                   id="addon-plumeria-qty"
+                  name="plumeria_quantity"
                   min="0"
                   max="100"
                   inputmode="numeric"
@@ -546,6 +558,10 @@
                 />
                 <span class="addon-hint">$5 per flower</span>
               </div>
+            </div>
+            <div class="flower-count-panel">
+              <span class="flower-count-label">Total flowers</span>
+              <span id="flower-count-value" class="flower-count-value">0</span>
             </div>
           </div>
 
@@ -561,6 +577,7 @@
                 <label for="order-details" class="field-label">Extra details</label>
                 <textarea
                   id="order-details"
+                  name="details"
                   rows="4"
                   placeholder="Example: For my girlfriend’s 18th birthday, she loves pink and butterflies. I’d like a name ribbon that says “Happy 18th, Aikam”."
                 ></textarea>
@@ -571,6 +588,7 @@
                   <label for="customer-name" class="field-label">Your name<span class="required-indicator">*</span></label>
                   <input
                     id="customer-name"
+                    name="customer_name"
                     type="text"
                     autocomplete="name"
                     placeholder="Enter your full name"
@@ -581,6 +599,7 @@
                   <label for="customer-phone" class="field-label">Phone number<span class="required-indicator">*</span></label>
                   <input
                     id="customer-phone"
+                    name="customer_phone"
                     type="tel"
                     autocomplete="tel"
                     placeholder="Enter your phone number"

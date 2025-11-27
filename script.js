@@ -1,6 +1,7 @@
 // ============ NAVBAR INTERACTIONS ============
 
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("Roses site script loaded");
   const navToggle = document.querySelector(".nav-toggle");
   const navLinks = document.querySelector(".nav-links");
 
@@ -24,6 +25,37 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".site-header");
   const headerHeight = header ? header.offsetHeight : 0;
 
+  let scrollAnimationFrame = null;
+
+  const smoothScrollTo = (targetY, duration = 650) => {
+    const startY = window.scrollY || window.pageYOffset;
+    const distance = targetY - startY;
+    const startTime = performance.now();
+
+    // easeInOutQuad for a nice smooth feel
+    const easeInOutQuad = (t) =>
+      t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+
+    const step = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeInOutQuad(progress);
+
+      window.scrollTo(0, startY + distance * eased);
+
+      if (progress < 1) {
+        scrollAnimationFrame = requestAnimationFrame(step);
+      } else {
+        scrollAnimationFrame = null;
+      }
+    };
+
+    if (scrollAnimationFrame) {
+      cancelAnimationFrame(scrollAnimationFrame);
+    }
+    scrollAnimationFrame = requestAnimationFrame(step);
+  };
+
   const scrollToTarget = (targetSelector) => {
     const targetEl = document.querySelector(targetSelector);
     if (!targetEl) return;
@@ -32,10 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
       targetEl.getBoundingClientRect().top + window.scrollY;
     const offsetPosition = elementPosition - headerHeight + 4; // tiny buffer
 
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
+    smoothScrollTo(offsetPosition, 650);
   };
 
   // Smooth scroll for navbar links (anchors)
@@ -117,9 +146,46 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+
   // Add-ons and form submission
   const customOrderForm = document.querySelector("#custom-order-form");
   const customOrderSubmit = document.querySelector("#custom-order-submit");
+
+  // ============ FLOWER COUNT PANEL ============
+
+  const dahliaInput = document.querySelector("#addon-dahlia-qty");
+  const plumeriaInput = document.querySelector("#addon-plumeria-qty");
+  const flowerCountValue = document.querySelector("#flower-count-value");
+
+  const parseQty = (inputEl) => {
+    if (!inputEl) return 0;
+    const raw = inputEl.value.trim();
+    const n = parseInt(raw || "0", 10);
+    return Number.isNaN(n) || n < 0 ? 0 : n;
+  };
+
+  const updateFlowerCount = () => {
+    if (!flowerCountValue) return;
+
+    const dahliaQty = parseQty(dahliaInput);
+    const plumeriaQty = parseQty(plumeriaInput);
+    const total = dahliaQty + plumeriaQty;
+
+    flowerCountValue.textContent = total.toString();
+  };
+
+  if (dahliaInput) {
+    dahliaInput.addEventListener("input", updateFlowerCount);
+    dahliaInput.addEventListener("change", updateFlowerCount);
+  }
+
+  if (plumeriaInput) {
+    plumeriaInput.addEventListener("input", updateFlowerCount);
+    plumeriaInput.addEventListener("change", updateFlowerCount);
+  }
+
+  // Initialize on load so the panel is never empty
+  updateFlowerCount();
 
   // Modal elements
   const orderModal = document.querySelector("#order-modal");
@@ -230,42 +296,28 @@ document.addEventListener("DOMContentLoaded", () => {
     return errors;
   };
 
-  const sendCustomOrder = async (data) => {
-    // Placeholder stub for now – this is where a real backend call will go.
-    // Example later:
-    // await fetch("https://your-api-url.com/api/custom-order", { ... })
-    console.log("Custom order submitted:", data);
+  const handleCustomOrderSubmit = (e) => {
+    if (e) e.preventDefault();
+
+    const formData = buildFormDataFromUI();
+    const errors = validateFormData(formData);
+
+    if (errors.length > 0) {
+      alert(errors.join("\n"));
+      return;
+    }
+
+    // Allow the normal HTML form submission to FormSubmit
+    customOrderForm.submit();
   };
 
-  if (customOrderForm && customOrderSubmit) {
-    customOrderSubmit.addEventListener("click", async (e) => {
-      e.preventDefault();
+  // Attach handler to the form submit (works even if the button ID changes)
+  if (customOrderForm) {
+    customOrderForm.addEventListener("submit", handleCustomOrderSubmit);
+  }
 
-      const formData = buildFormDataFromUI();
-      const errors = validateFormData(formData);
-
-      if (errors.length > 0) {
-        alert(errors.join("\n"));
-        return;
-      }
-
-      try {
-        await sendCustomOrder(formData);
-        customOrderForm.reset();
-
-        // Clear selected classes after reset
-        primaryRibbonOptions.forEach((o) => o.classList.remove("is-selected"));
-        secondaryRibbonOptions.forEach((o) =>
-          o.classList.remove("is-selected")
-        );
-
-        openOrderModal();
-      } catch (err) {
-        console.error(err);
-        alert(
-          "Something went wrong while submitting your order. Please try again."
-        );
-      }
-    });
+  // Also attach directly to the button if it exists and is type="button"
+  if (customOrderSubmit) {
+    customOrderSubmit.addEventListener("click", handleCustomOrderSubmit);
   }
 });
