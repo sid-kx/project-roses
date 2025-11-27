@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roses by Aikam | Luxury Ribbon Bouquets</title>
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Temporary inline styles for hero background -->
+  <style>
+  body {
+    /* Override page background so roses sit behind navbar as well */
+    background-image:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.9)),
+      url("images/hero-background.png");
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 1.5rem 5rem;
+    color: #f7f3ea;
+    background: transparent; /* let body background show through */
+  }
+</style>
+</head>
+<body>
+  <!-- ================= HEADER / NAVBAR ================= -->
+  <header class="site-header">
+    <nav class="navbar container">
+      <div class="brand">
+        <!-- Logo slot - replace the src with your actual logo file when ready -->
+        <img src="images/roses-logo.png" alt="Roses by Aikam logo" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-name">Roses by Aikam</span>
+          <span class="brand-tagline">Luxury Ribbon Bouquets</span>
+        </div>
+      </div>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#bouquets">Bouquets</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#custom-orders">Custom Orders</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#policy">Policy</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ================ PAGE SECTIONS (placeholders for now) ================ -->
+  <main>
+    <section id="hero" class="section hero-section">
+      <!-- Hero content will go here -->
+    </section>
+
+    <section id="about" class="section about-section">
+      <!-- About content will go here -->
+    </section>
+
+    <section id="bouquets" class="section bouquets-section">
+      <!-- Product / collection content will go here -->
+    </section>
+
+    <section id="pricing" class="section pricing-section">
+      <!-- Pricing table will go here -->
+    </section>
+
+    <section id="custom-orders" class="section custom-orders-section">
+      <!-- Custom form will go here -->
+    </section>
+
+    <section id="gallery" class="section gallery-section">
+      <!-- Bouquet photos grid will go here -->
+    </section>
+
+    <section id="policy" class="section policy-section">
+      <!-- Policy content will go here -->
+    </section>
+
+    <section id="contact" class="section contact-section">
+      <!-- Contact + socials will go here -->
+    </section>
+  </main>
+
+  <!-- Optional footer later -->
+
+  <!-- Main script -->
+  <script src="script.js" defer></script>
+</body>
+</html>
