@@ -1944,6 +1944,15 @@ body.bg-dark {
   display: block;
 }
 
+.footer-social-link img {
+  width: 20px;
+  height: 20px;
+  max-width: 20px;
+  max-height: 20px;
+  object-fit: contain;
+  display: block;
+}
+
 .footer-copy {
   margin: 0;
   font-size: 0.8rem;
