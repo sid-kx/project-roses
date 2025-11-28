@@ -617,4 +617,156 @@ document.addEventListener("DOMContentLoaded", () => {
   if (customOrderSubmit) {
     customOrderSubmit.addEventListener("click", handleCustomOrderSubmit);
   }
+
+  // ============ POLICY FAQ ACCORDION ============
+  // Allows each FAQ question in the Policy section to expand/collapse.
+  // Expected markup in HTML:
+  // <article class="faq-item">
+  //   <button class="faq-question" type="button">
+  //     <span>Question text here?</span>
+  //     <span class="faq-toggle-icon">+</span>
+  //   </button>
+  //   <div class="faq-answer">
+  //     <p>Answer content...</p>
+  //   </div>
+  // </article>
+
+  const faqItems = document.querySelectorAll(".faq-item");
+
+  if (faqItems.length) {
+    faqItems.forEach((item) => {
+      const questionBtn = item.querySelector(".faq-question");
+      const answer = item.querySelector(".faq-answer");
+
+      if (!questionBtn || !answer) return;
+
+      // Start collapsed by default
+      item.classList.remove("is-open");
+
+      questionBtn.addEventListener("click", () => {
+        const isOpen = item.classList.contains("is-open");
+
+        // Close all FAQ items first so only one is open at a time
+        faqItems.forEach((other) => {
+          other.classList.remove("is-open");
+        });
+
+        // Toggle the clicked item
+        if (!isOpen) {
+          item.classList.add("is-open");
+        }
+      });
+    });
+  }
+
+  // ============ GALLERY CAROUSEL ROWS ============
+  // Each gallery row horizontally scrolls and the image closest to the
+  // center of the visible track gets the `is-centered` class so we can
+  // pop it visually in CSS (scale/brightness), while the side images
+  // stay tinted.
+
+  const galleryTracks = document.querySelectorAll(".gallery-track");
+
+  // Helper to clone gallery items left/right and enable infinite scroll illusion
+  const enhanceLoopingForTrack = (track) => {
+    // Only enhance once per track
+    if (!track || track.dataset.loopEnhanced === "true") return;
+
+    const originals = Array.from(track.querySelectorAll(".gallery-item"));
+    if (!originals.length) return;
+
+    const beforeFrag = document.createDocumentFragment();
+    const afterFrag = document.createDocumentFragment();
+
+    // Clone one full set of items before and after the originals so that
+    // the real images can always scroll into the center (no hard edges).
+    originals.forEach((item) => {
+      const beforeClone = item.cloneNode(true);
+      beforeClone.classList.add("gallery-item--clone");
+      beforeFrag.appendChild(beforeClone);
+
+      const afterClone = item.cloneNode(true);
+      afterClone.classList.add("gallery-item--clone");
+      afterFrag.appendChild(afterClone);
+    });
+
+    // Prepend and append the clones
+    track.insertBefore(beforeFrag, track.firstChild);
+    track.appendChild(afterFrag);
+
+    // Mark as enhanced so we don't repeat this work
+    track.dataset.loopEnhanced = "true";
+
+    // Start roughly in the middle set so the user can scroll both ways
+    // without immediately hitting an edge.
+    requestAnimationFrame(() => {
+      const oneSetWidth = track.scrollWidth / 3; // 3 sets: before, original, after
+      track.scrollLeft = oneSetWidth;
+    });
+  };
+
+  const updateGalleryTrack = (track) => {
+    const items = track.querySelectorAll(".gallery-item");
+    if (!items.length) return;
+
+    const trackRect = track.getBoundingClientRect();
+    const trackCenter = trackRect.left + trackRect.width / 2;
+
+    let closestItem = null;
+    let closestDistance = Infinity;
+
+    items.forEach((item) => {
+      const rect = item.getBoundingClientRect();
+      const itemCenter = rect.left + rect.width / 2;
+      const distance = Math.abs(itemCenter - trackCenter);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestItem = item;
+      }
+    });
+
+    items.forEach((item) => {
+      item.classList.toggle("is-centered", item === closestItem);
+    });
+  };
+
+  const initGalleryTracks = () => {
+    if (!galleryTracks.length) return;
+
+    galleryTracks.forEach((track) => {
+      // Enhance each track so images can loop left/right and the
+      // first/last real images can still move into the center.
+      enhanceLoopingForTrack(track);
+
+      const handler = () => updateGalleryTrack(track);
+
+      // Update on scroll and on window resize so the centered image
+      // stays in sync with the viewport.
+      track.addEventListener("scroll", handler);
+      window.addEventListener("resize", handler);
+
+      // Initial calculation when the page loads.
+      handler();
+
+      // Optional: clicking an image scrolls it smoothly into the center.
+      track.querySelectorAll(".gallery-item").forEach((item) => {
+        item.addEventListener("click", () => {
+          const rect = item.getBoundingClientRect();
+          const trackRect = track.getBoundingClientRect();
+          const currentScroll = track.scrollLeft;
+          const itemCenter = rect.left + rect.width / 2;
+          const trackCenter = trackRect.left + trackRect.width / 2;
+          const delta = itemCenter - trackCenter;
+
+          track.scrollTo({
+            left: currentScroll + delta,
+            behavior: "smooth",
+          });
+        });
+      });
+    });
+  };
+
+  initGalleryTracks();
 });
