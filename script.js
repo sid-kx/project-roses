@@ -589,6 +589,44 @@ document.addEventListener("DOMContentLoaded", () => {
     return errors;
   };
 
+  // Display a temporary success message after the form submits.
+  const showFormSuccess = () => {
+    // Try to find an existing status element or create one.
+    let statusEl = document.querySelector('.form-submit-status');
+
+    if (!statusEl) {
+      statusEl = document.createElement('div');
+      statusEl.className = 'form-submit-status';
+      statusEl.style.position = 'fixed';
+      statusEl.style.left = '50%';
+      statusEl.style.top = '20px';
+      statusEl.style.transform = 'translateX(-50%)';
+      statusEl.style.zIndex = '2000';
+      statusEl.style.padding = '0.8rem 1.1rem';
+      statusEl.style.borderRadius = '10px';
+      statusEl.style.background = 'rgba(34, 34, 34, 0.95)';
+      statusEl.style.color = '#fff';
+      statusEl.style.boxShadow = '0 8px 24px rgba(0,0,0,0.6)';
+      document.body.appendChild(statusEl);
+    }
+
+    statusEl.textContent = 'Form submitted — thanks! We will contact you soon.';
+
+    // Auto-hide after 4 seconds
+    setTimeout(() => {
+      if (statusEl && statusEl.parentNode) statusEl.parentNode.removeChild(statusEl);
+    }, 4000);
+
+    // Optionally reset the form
+    try {
+      customOrderForm.reset();
+      // If you use JavaScript-driven UI state (selected ribbons, counts), you may
+      // want to call any reset helpers here (not implemented automatically).
+    } catch (err) {
+      // ignore
+    }
+  };
+
   const handleCustomOrderSubmit = (e) => {
     if (e) e.preventDefault();
 
@@ -604,7 +642,31 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Allow the normal HTML form submission to FormSubmit
+    // Submit to FormSubmit but keep the user on the page.
+    // Create (or reuse) a hidden iframe and set the form's target to it so the
+    // browser doesn't navigate away to the FormSubmit confirmation page.
+    const iframeId = "__formsubmit_hidden_iframe";
+    let hiddenIframe = document.getElementById(iframeId);
+
+    if (!hiddenIframe) {
+      hiddenIframe = document.createElement("iframe");
+      hiddenIframe.style.display = "none";
+      hiddenIframe.id = iframeId;
+      hiddenIframe.name = iframeId; // target uses name attribute
+      document.body.appendChild(hiddenIframe);
+
+      // When the iframe loads, show a simple success state and optionally reset.
+      hiddenIframe.addEventListener("load", () => {
+        // The iframe will load the FormSubmit response; we interpret any load
+        // as a successful submission (FormSubmit returns 200). Show a message.
+        showFormSuccess();
+      });
+    }
+
+    // Ensure the form will post into the hidden iframe
+    customOrderForm.setAttribute("target", hiddenIframe.name);
+
+    // Submit the form into the hidden iframe
     customOrderForm.submit();
   };
 
