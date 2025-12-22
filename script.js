@@ -1,7 +1,7 @@
 // ============ NAVBAR INTERACTIONS ============
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Roses site script loaded");
+  console.log("The Rose Room site script loaded");
   const navToggle = document.querySelector(".nav-toggle");
   const navLinks = document.querySelector(".nav-links");
 
@@ -665,6 +665,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Ensure the form will post into the hidden iframe
     customOrderForm.setAttribute("target", hiddenIframe.name);
+
+    // Replace any hardcoded email or Instagram handle in the form action, if present.
+    // (If you have a form action attribute that uses the old email, update here)
+    if (customOrderForm.action && customOrderForm.action.includes("rosesbyaikam@gmail.com")) {
+      customOrderForm.action = customOrderForm.action.replace(
+        "rosesbyaikam@gmail.com",
+        "theroseroom777@gmail.com"
+      );
+    }
+    if (customOrderForm.action && customOrderForm.action.includes("rosesbyaikam")) {
+      customOrderForm.action = customOrderForm.action.replace(
+        "rosesbyaikam",
+        "the_rose_.room"
+      );
+    }
 
     // Submit the form into the hidden iframe
     customOrderForm.submit();
