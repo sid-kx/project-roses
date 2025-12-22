@@ -666,19 +666,19 @@ document.addEventListener("DOMContentLoaded", () => {
     // Ensure the form will post into the hidden iframe
     customOrderForm.setAttribute("target", hiddenIframe.name);
 
-    // Replace any hardcoded email or Instagram handle in the form action, if present.
-    // (If you have a form action attribute that uses the old email, update here)
-    if (customOrderForm.action && customOrderForm.action.includes("rosesbyaikam@gmail.com")) {
-      customOrderForm.action = customOrderForm.action.replace(
-        "rosesbyaikam@gmail.com",
-        "theroseroom777@gmail.com"
-      );
-    }
-    if (customOrderForm.action && customOrderForm.action.includes("rosesbyaikam")) {
-      customOrderForm.action = customOrderForm.action.replace(
-        "rosesbyaikam",
-        "the_rose_.room"
-      );
+    // Ensure the form action points to the correct FormSubmit endpoint.
+    // (Never rewrite the action to an Instagram handle.)
+    const expectedAction = "https://formsubmit.co/theroseroom777@gmail.com";
+    if (customOrderForm.action && customOrderForm.action !== expectedAction) {
+      // If action still points to the old email, swap it. Otherwise, force the expected endpoint.
+      if (customOrderForm.action.includes("formsubmit.co") && customOrderForm.action.includes("rosesbyaikam@gmail.com")) {
+        customOrderForm.action = customOrderForm.action.replace(
+          "rosesbyaikam@gmail.com",
+          "theroseroom777@gmail.com"
+        );
+      } else {
+        customOrderForm.action = expectedAction;
+      }
     }
 
     // Submit the form into the hidden iframe
