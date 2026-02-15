@@ -181,18 +181,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Pricing table (matches the Pricing section on the site)
   const ROSE_BOUQUET_PRICES = {
-    7: 15,
-    9: 20,
-    12: 25,
-    15: 30,
-    20: 40,
-    30: 50,
+    7: 20,
+    9: 25,
+    12: 35,
+    15: 40,
+    20: 45,
+    30: 60,
   };
 
   const ADDON_PRICES = {
     crown: 3,
     butterfly: 1,
-    writing: 3,
+    writing: 5,
     glitterPerRose: 0.75,
     gemsPerRose: 0.5,
     dahliaPerFlower: 5,
