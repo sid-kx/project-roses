@@ -12,9 +12,7 @@
   <style>
     body {
       /* Override page background so roses sit behind navbar as well */
-      background-image:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.9)),
-        url("images/hero-background.png");
+      background-image: url("images/hero-background.png");
       background-size: cover;
       background-position: top center;
       background-repeat: no-repeat;
@@ -588,7 +586,61 @@
           </div>
         </div>
 
-        <!-- PANEL 4: Cost Summary -->
+        <!-- PANEL 4: Pickup / Delivery Date -->
+        <div class="order-panel order-panel-fulfillment">
+          <div class="order-panel-header">
+            <h3 class="order-panel-title">Pickup or Delivery Date</h3>
+            <p class="order-panel-subtitle">
+              Choose how you would like to receive your bouquet and select the date you need it ready for.
+            </p>
+          </div>
+
+          <div class="fulfillment-grid">
+            <div class="fulfillment-options" role="group" aria-label="Choose pickup or delivery">
+              <button
+                type="button"
+                class="fulfillment-option"
+                data-fulfillment-option="Pickup"
+              >
+                <span class="fulfillment-option-icon">♡</span>
+                <span class="fulfillment-option-text">
+                  <span class="fulfillment-option-title">Pickup</span>
+                  <span class="fulfillment-option-subtitle">Near The Gore Rd &amp; Ebenezer Dr</span>
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="fulfillment-option"
+                data-fulfillment-option="Delivery"
+              >
+                <span class="fulfillment-option-icon">✦</span>
+                <span class="fulfillment-option-text">
+                  <span class="fulfillment-option-title">Delivery</span>
+                  <span class="fulfillment-option-subtitle">Local delivery if available</span>
+                </span>
+              </button>
+            </div>
+
+            <div class="order-date-card">
+              <label for="needed-date" class="field-label">Date needed<span class="required-indicator">*</span></label>
+              <input
+                id="needed-date"
+                name="needed_date"
+                type="date"
+                class="order-date-input"
+                required
+              />
+              <p class="order-date-note">
+                We recommend ordering at least 5–7 days before your event.
+              </p>
+            </div>
+          </div>
+
+          <input type="hidden" id="fulfillment-type-input" name="fulfillment_type" />
+        </div>
+
+        <!-- PANEL 5: Cost Summary -->
         <div class="order-panel order-panel-cost">
           <div class="order-panel-header">
             <h3 class="order-panel-title">Cost</h3>
@@ -627,7 +679,7 @@
           <input type="hidden" id="final-price-input" name="final_price" />
         </div>
 
-        <!-- PANEL 5: Extra Details + Contact -->
+        <!-- PANEL 6: Extra Details + Contact -->
           <div class="order-panel">
             <div class="order-panel-header">
               <h3 class="order-panel-title">Details &amp; Contact</h3>
@@ -665,6 +717,19 @@
                     type="tel"
                     autocomplete="tel"
                     placeholder="Enter your phone number"
+                  />
+                </div>
+
+                <div class="order-contact-field">
+                  <label for="customer-instagram" class="field-label">
+                    Instagram username <span class="optional-tag">(optional but preferred)</span>
+                  </label>
+                  <input
+                    id="customer-instagram"
+                    name="instagram_username"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="@yourusername"
                   />
                 </div>
               </div>

@@ -134,6 +134,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const crownHidden = document.querySelector("#crown-choice-input");
   const butterflyHidden = document.querySelector("#butterfly-choice-input");
   const finalPriceHidden = document.querySelector("#final-price-input");
+  const fulfillmentOptions = document.querySelectorAll("[data-fulfillment-option]");
+  const fulfillmentTypeHidden = document.querySelector("#fulfillment-type-input");
+  const neededDateInput = document.querySelector("#needed-date");
 
   primaryRibbonOptions.forEach((option) => {
     option.addEventListener("click", () => {
@@ -160,6 +163,29 @@ document.addEventListener("DOMContentLoaded", () => {
       if (secondaryColorHidden) secondaryColorHidden.value = color;
     });
   });
+
+  // Pickup / delivery selection
+  fulfillmentOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      fulfillmentOptions.forEach((o) => o.classList.remove("is-selected"));
+      option.classList.add("is-selected");
+
+      const fulfillmentType = option.getAttribute("data-fulfillment-option") || "";
+      if (fulfillmentTypeHidden) {
+        fulfillmentTypeHidden.value = fulfillmentType;
+      }
+    });
+  });
+
+  // Prevent customers from selecting past dates in the order calendar.
+  if (neededDateInput) {
+    const today = new Date();
+    const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
+      .toISOString()
+      .split("T")[0];
+
+    neededDateInput.min = localToday;
+  }
 
 
   // Add-ons and form submission
@@ -515,6 +541,15 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector("#customer-name")?.value.trim() || "";
     const phone =
       document.querySelector("#customer-phone")?.value.trim() || "";
+    const instagramUsername =
+      document.querySelector("#customer-instagram")?.value.trim() || "";
+    const fulfillmentType = fulfillmentTypeHidden?.value.trim() || "";
+    const neededDate = neededDateInput?.value.trim() || "";
+
+    // Keep FormSubmit fields updated right before submission.
+    if (fulfillmentTypeHidden) {
+      fulfillmentTypeHidden.value = fulfillmentType;
+    }
 
     // Derive rose & total flower counts from the same logic as the UI
     const baseTotal = getBaseBouquetSize();
@@ -557,6 +592,9 @@ document.addEventListener("DOMContentLoaded", () => {
       details,
       name,
       phone,
+      instagramUsername,
+      fulfillmentType,
+      neededDate,
       roseCount,
       totalFlowers,
     };
@@ -575,6 +613,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!data.phone) {
       errors.push("Please enter your phone number.");
+    }
+
+    if (!data.fulfillmentType) {
+      errors.push("Please choose pickup or delivery.");
+    }
+
+    if (!data.neededDate) {
+      errors.push("Please choose the date you need your bouquet.");
     }
 
     if (
@@ -620,6 +666,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // Optionally reset the form
     try {
       customOrderForm.reset();
+      fulfillmentOptions.forEach((option) => option.classList.remove("is-selected"));
+      if (fulfillmentTypeHidden) fulfillmentTypeHidden.value = "";
+      if (neededDateInput) {
+        const today = new Date();
+        const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
+          .toISOString()
+          .split("T")[0];
+        neededDateInput.min = localToday;
+      }
       // If you use JavaScript-driven UI state (selected ribbons, counts), you may
       // want to call any reset helpers here (not implemented automatically).
     } catch (err) {
