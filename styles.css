@@ -222,6 +222,21 @@ body.bg-dark {
     padding: 0 1.25rem;
   }
 
+    .order-panel-fulfillment {
+    padding: 1.45rem 1.05rem 1.55rem;
+  }
+
+  .order-date-card {
+    padding: 0.95rem;
+  }
+
+  .order-date-input {
+    width: 100%;
+    max-width: 100%;
+    font-size: 0.9rem;
+    padding: 0.72rem 0.78rem;
+  }
+
   .brand-logo {
     width: 42px;
     height: 42px;
@@ -1438,6 +1453,7 @@ body.bg-dark {
 
 .order-date-card {
   min-height: 118px;
+  min-width: 0;
   padding: 1rem;
   border-radius: 18px;
   border: 1px solid rgba(224, 185, 106, 0.42);
@@ -1448,10 +1464,14 @@ body.bg-dark {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow: hidden;
 }
 
 .order-date-input {
+  display: block;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   padding: 0.78rem 0.9rem;
   border-radius: 12px;
   border: 1px solid rgba(224, 185, 106, 0.5);
@@ -1709,10 +1729,10 @@ body.bg-dark {
   .order-details-grid {
     grid-template-columns: 1fr;
   }
-}
-.fulfillment-grid {
-  grid-template-columns: 1fr;
-}
+  
+  .fulfillment-grid {
+    grid-template-columns: 1fr;
+  }
 
 @media (max-width: 768px) {
   .custom-orders-section {
