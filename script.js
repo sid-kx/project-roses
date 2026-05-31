@@ -697,11 +697,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Let FormSubmit handle the real browser submission directly.
-    // This is important because FormSubmit may need to show an activation,
-    // confirmation, captcha, or error page. Submitting through a hidden iframe
-    // can hide those responses and make it look successful when no email sends.
-    const expectedAction = "https://formsubmit.co/theroseroom777@gmail.com";
+    // Let Web3Forms handle the real browser submission directly.
+    // The form action must stay on Web3Forms so the access_key in index.html
+    // can route the order details to the connected email inbox.
+    const expectedAction = "https://api.web3forms.com/submit";
     customOrderForm.action = expectedAction;
     customOrderForm.removeAttribute("target");
 
