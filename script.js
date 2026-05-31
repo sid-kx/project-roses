@@ -546,7 +546,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const fulfillmentType = fulfillmentTypeHidden?.value.trim() || "";
     const neededDate = neededDateInput?.value.trim() || "";
 
-    // Keep FormSubmit fields updated right before submission.
+    // Keep the hidden fulfillment field updated right before submission.
     if (fulfillmentTypeHidden) {
       fulfillmentTypeHidden.value = fulfillmentType;
     }
@@ -682,7 +682,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  const handleCustomOrderSubmit = (e) => {
+  const handleCustomOrderSubmit = async (e) => {
     if (e) e.preventDefault();
 
     // Make sure counts and costs are up to date before reading values
@@ -697,17 +697,40 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Let Web3Forms handle the real browser submission directly.
-    // The form action must stay on Web3Forms so the access_key in index.html
-    // can route the order details to the connected email inbox.
+    // Send the form to Web3Forms in the background so the customer stays on this website.
     const expectedAction = "https://api.web3forms.com/submit";
     customOrderForm.action = expectedAction;
     customOrderForm.removeAttribute("target");
 
-    // Remove this listener before calling submit again so the browser can
-    // perform the normal FormSubmit POST without looping back into this handler.
-    customOrderForm.removeEventListener("submit", handleCustomOrderSubmit);
-    customOrderForm.submit();
+    const submitButton = customOrderSubmit || customOrderForm.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton ? submitButton.textContent : "";
+
+    try {
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Submitting...";
+      }
+
+      const response = await fetch(expectedAction, {
+        method: "POST",
+        body: new FormData(customOrderForm),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        showFormSuccess();
+      } else {
+        alert(result.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("Something went wrong. Please check your connection and try again.");
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
+    }
   };
 
   // Attach handler to the form submit (works even if the button ID changes)
