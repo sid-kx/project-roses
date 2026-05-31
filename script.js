@@ -697,46 +697,17 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Submit to FormSubmit but keep the user on the page.
-    // Create (or reuse) a hidden iframe and set the form's target to it so the
-    // browser doesn't navigate away to the FormSubmit confirmation page.
-    const iframeId = "__formsubmit_hidden_iframe";
-    let hiddenIframe = document.getElementById(iframeId);
-
-    if (!hiddenIframe) {
-      hiddenIframe = document.createElement("iframe");
-      hiddenIframe.style.display = "none";
-      hiddenIframe.id = iframeId;
-      hiddenIframe.name = iframeId; // target uses name attribute
-      document.body.appendChild(hiddenIframe);
-
-      // When the iframe loads, show a simple success state and optionally reset.
-      hiddenIframe.addEventListener("load", () => {
-        // The iframe will load the FormSubmit response; we interpret any load
-        // as a successful submission (FormSubmit returns 200). Show a message.
-        showFormSuccess();
-      });
-    }
-
-    // Ensure the form will post into the hidden iframe
-    customOrderForm.setAttribute("target", hiddenIframe.name);
-
-    // Ensure the form action points to the correct FormSubmit endpoint.
-    // (Never rewrite the action to an Instagram handle.)
+    // Let FormSubmit handle the real browser submission directly.
+    // This is important because FormSubmit may need to show an activation,
+    // confirmation, captcha, or error page. Submitting through a hidden iframe
+    // can hide those responses and make it look successful when no email sends.
     const expectedAction = "https://formsubmit.co/theroseroom777@gmail.com";
-    if (customOrderForm.action && customOrderForm.action !== expectedAction) {
-      // If action still points to the old email, swap it. Otherwise, force the expected endpoint.
-      if (customOrderForm.action.includes("formsubmit.co") && customOrderForm.action.includes("rosesbyaikam@gmail.com")) {
-        customOrderForm.action = customOrderForm.action.replace(
-          "rosesbyaikam@gmail.com",
-          "theroseroom777@gmail.com"
-        );
-      } else {
-        customOrderForm.action = expectedAction;
-      }
-    }
+    customOrderForm.action = expectedAction;
+    customOrderForm.removeAttribute("target");
 
-    // Submit the form into the hidden iframe
+    // Remove this listener before calling submit again so the browser can
+    // perform the normal FormSubmit POST without looping back into this handler.
+    customOrderForm.removeEventListener("submit", handleCustomOrderSubmit);
     customOrderForm.submit();
   };
 
@@ -745,9 +716,14 @@ document.addEventListener("DOMContentLoaded", () => {
     customOrderForm.addEventListener("submit", handleCustomOrderSubmit);
   }
 
-  // Also attach directly to the button if it exists and is type="button"
+  // If the submit button is accidentally set to type="button", make it submit the form.
   if (customOrderSubmit) {
-    customOrderSubmit.addEventListener("click", handleCustomOrderSubmit);
+    customOrderSubmit.addEventListener("click", (e) => {
+      if (customOrderSubmit.type === "button") {
+        e.preventDefault();
+        handleCustomOrderSubmit(e);
+      }
+    });
   }
 
   // ============ POLICY FAQ ACCORDION ============
